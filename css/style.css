@@ -53,6 +53,7 @@ body {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100dvh;
   overflow-y: auto;
 }
 
@@ -461,6 +462,9 @@ details.expand > summary {
   line-height: 1.6;
   transition: all 0.2s ease;
 }
+
+.feedback--neutral { background: #ECFEFF; color: #155E75; }
+.choice.is-active { border-color: var(--accent); background: var(--accent-light); color: var(--accent-dark); }
 
 /* === Animationen (F) === */
 @keyframes fadeSlideIn {

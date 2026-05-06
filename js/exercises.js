@@ -55,7 +55,8 @@ const Exercises = {
     ).join('');
     return `
       <div class="card" data-exercise="multiple-choice"
-           data-correct="${ex.correct}"
+           data-correct="${ex.correct || 0}"
+           ${ex.subjective ? 'data-subjective="true"' : ''}
            data-explanation="${Renderer.escapeHtml(ex.explanation || '')}">
         ${ex.question ? `<h3 class="card__title">${ex.question}</h3>` : ''}
         <div class="choices">${choices}</div>
@@ -178,11 +179,12 @@ const Exercises = {
   },
 
   render_interface_find(ex, id) {
-    const targets = ex.targets.map((t, i) =>
-      `<button class="hotspot" type="button" data-target="${i}"
-        style="left:${t.x}%;top:${t.y}%;width:${t.w}%;height:${t.h}%"
-        aria-label="${Renderer.escapeHtml(t.label)}"></button>`
-    ).join('');
+    const targets = ex.targets.map((t, i) => {
+      const z = (t.w * t.h) < 200 ? 10 : 1;
+      return `<button class="hotspot" type="button" data-target="${i}"
+        style="left:${t.x}%;top:${t.y}%;width:${t.w}%;height:${t.h}%;z-index:${z}"
+        aria-label="${Renderer.escapeHtml(t.label)}"></button>`;
+    }).join('');
     const checklist = ex.targets.map((t, i) =>
       `<li data-target="${i}">${Renderer.escapeHtml(t.label)}</li>`
     ).join('');
@@ -321,6 +323,7 @@ const Exercises = {
   },
 
   bindMultipleChoice(root) {
+    const isSubjective = root.dataset.subjective === 'true';
     const correct = parseInt(root.dataset.correct, 10);
     const explanation = root.dataset.explanation;
     const feedback = root.querySelector('.feedback');
@@ -329,7 +332,12 @@ const Exercises = {
         if (root.dataset.locked === 'true') return;
         root.dataset.locked = 'true';
         const i = parseInt(btn.dataset.index, 10);
-        if (i === correct) {
+        if (isSubjective) {
+          btn.classList.add('is-active');
+          feedback.className = 'feedback feedback--neutral';
+          feedback.hidden = false;
+          feedback.innerHTML = explanation || '';
+        } else if (i === correct) {
           btn.classList.add('is-correct');
           feedback.className = 'feedback feedback--correct';
           feedback.hidden = false;
@@ -370,7 +378,7 @@ const Exercises = {
     ).join('');
     return `
       <div class="card" data-exercise="prompt-toggle-demo"
-           data-base="${Renderer.escapeHtml(ex.baseText || '')}"
+           data-base='${JSON.stringify(ex.baseText || '')}'
            data-snippets='${JSON.stringify(ex.levers.map((l) => l.snippet))}'>
         ${ex.question ? `<h3 class="card__title">${ex.question}</h3>` : ''}
         ${ex.intro ? `<p class="card__instruction">${ex.intro}</p>` : ''}
@@ -405,7 +413,7 @@ const Exercises = {
   },
 
   bindPromptToggleDemo(root) {
-    const baseText = root.dataset.base || '';
+    const baseText = JSON.parse(root.dataset.base);
     const snippets = JSON.parse(root.dataset.snippets);
     const active = snippets.map(() => false);
     const output = root.querySelector('[data-output]');
