@@ -49,6 +49,18 @@ window.LESSON_02 = {
   ],
   practice: [
     {
+      type: 'prompt-toggle-demo',
+      question: 'Live-Spielwiese: Schalt die 4 Hebel an und sieh zu, wie der Prompt wächst.',
+      intro: 'Tipp jeden Hebel an oder aus — der Prompt-Text unten passt sich live an. Wenn du fertig bist, kopiere den Prompt und probier ihn in ChatGPT aus.',
+      baseText: 'Schreib was über Geburtstage.',
+      levers: [
+        { label: 'Rolle', snippet: 'Du bist Erzieherin in einer Kita.' },
+        { label: 'Aufgabe', snippet: 'Schreib mir 5 kreative Ideen für eine Geburtstagsfeier.' },
+        { label: 'Kontext', snippet: 'Es geht um ein 4-jähriges Kind in einer Kita-Gruppe von 18 Kindern.' },
+        { label: 'Format', snippet: 'Format: nummerierte Liste, je 2 Sätze pro Idee, freundlich und unkompliziert.' }
+      ]
+    },
+    {
       type: 'prompt-builder',
       question: 'Bau dir selbst einen starken Prompt zusammen — wähl in jedem Slot die bessere Option.',
       slots: [

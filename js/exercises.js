@@ -27,6 +27,9 @@ const Exercises = {
     scope.querySelectorAll('[data-exercise="data-decision"]').forEach((root) => {
       Exercises.bindDataDecision(root);
     });
+    scope.querySelectorAll('[data-exercise="prompt-toggle-demo"]').forEach((root) => {
+      Exercises.bindPromptToggleDemo(root);
+    });
   },
 
   copyFromTarget(btn) {
@@ -356,6 +359,85 @@ const Exercises = {
         ${ex.note ? `<p class="copy-hint">${ex.note}</p>` : ''}
       </div>
     `;
+  },
+
+  render_prompt_toggle_demo(ex, id) {
+    const leverButtons = ex.levers.map((l, i) =>
+      `<button class="lever-toggle" type="button" data-i="${i}">
+        <span class="lever-toggle__icon">+</span>
+        <span class="lever-toggle__label">${Renderer.escapeHtml(l.label)}</span>
+      </button>`
+    ).join('');
+    return `
+      <div class="card" data-exercise="prompt-toggle-demo"
+           data-base="${Renderer.escapeHtml(ex.baseText || '')}"
+           data-snippets='${JSON.stringify(ex.levers.map((l) => l.snippet))}'>
+        ${ex.question ? `<h3 class="card__title">${ex.question}</h3>` : ''}
+        ${ex.intro ? `<p class="card__instruction">${ex.intro}</p>` : ''}
+        <div class="lever-grid">${leverButtons}</div>
+        <div class="prompt-output" data-output></div>
+        <button class="copy-btn" type="button" data-copy-from-toggle>📋 Diesen Prompt kopieren</button>
+      </div>
+    `;
+  },
+
+  render_finale_card(ex, id) {
+    const hebel = (ex.hebel || [
+      { icon: '👤', label: 'Rolle', hint: 'Wer soll die KI sein?' },
+      { icon: '🎯', label: 'Aufgabe', hint: 'Was genau soll passieren?' },
+      { icon: '🧩', label: 'Kontext', hint: 'Für wen, welche Situation?' },
+      { icon: '📐', label: 'Format', hint: 'Wie soll die Antwort aussehen?' }
+    ]).map((h) =>
+      `<div class="finale-hebel__item">
+        <span class="finale-hebel__icon" aria-hidden="true">${h.icon}</span>
+        <div class="finale-hebel__label">${Renderer.escapeHtml(h.label)}</div>
+        <div class="finale-hebel__hint">${Renderer.escapeHtml(h.hint)}</div>
+      </div>`
+    ).join('');
+    return `
+      <div class="finale-card">
+        <h2>${ex.title || 'Glückwunsch — du hast es drauf!'}</h2>
+        ${ex.body ? `<p>${ex.body}</p>` : ''}
+        <div class="finale-hebel">${hebel}</div>
+        <p class="finale-card__signature">${ex.signature || ''}</p>
+      </div>
+    `;
+  },
+
+  bindPromptToggleDemo(root) {
+    const baseText = root.dataset.base || '';
+    const snippets = JSON.parse(root.dataset.snippets);
+    const active = snippets.map(() => false);
+    const output = root.querySelector('[data-output]');
+
+    const update = () => {
+      const parts = snippets.filter((_, i) => active[i]);
+      output.textContent = parts.length === 0 ? baseText : parts.join(' ');
+    };
+    update();
+
+    root.querySelectorAll('.lever-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const i = parseInt(btn.dataset.i, 10);
+        active[i] = !active[i];
+        btn.classList.toggle('is-on', active[i]);
+        const icon = btn.querySelector('.lever-toggle__icon');
+        if (icon) icon.textContent = active[i] ? '✓' : '+';
+        update();
+      });
+    });
+
+    root.querySelector('[data-copy-from-toggle]').addEventListener('click', (e) => {
+      const text = output.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        e.currentTarget.textContent = '✓ Kopiert!';
+        e.currentTarget.classList.add('is-copied');
+        setTimeout(() => {
+          e.currentTarget.textContent = '📋 Diesen Prompt kopieren';
+          e.currentTarget.classList.remove('is-copied');
+        }, 2200);
+      });
+    });
   },
 };
 

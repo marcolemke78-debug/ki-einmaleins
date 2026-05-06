@@ -107,6 +107,12 @@ body {
 
 .lesson-link:hover { background: rgba(15,118,110,0.06); }
 .lesson-link.is-active { background: var(--accent-light); color: var(--accent-dark); font-weight: 600; }
+.lesson-link__icon {
+  font-size: 18px;
+  width: 22px; flex-shrink: 0;
+  text-align: center;
+  line-height: 1;
+}
 .lesson-link__check {
   width: 20px; height: 20px; flex-shrink: 0;
   border-radius: 50%; border: 2px solid var(--border);
@@ -395,4 +401,126 @@ details.expand > summary {
 .warning-banner {
   background: #FEF3C7; border-left: 4px solid var(--warning);
   padding: var(--space-3); border-radius: var(--radius); margin-bottom: var(--space-4);
+}
+
+/* === Lever-Toggle (prompt-toggle-demo) === */
+.lever-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+.lever-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font: inherit;
+  cursor: pointer;
+  min-height: var(--tap-min);
+  transition: all 0.18s ease;
+}
+.lever-toggle:hover { border-color: var(--accent); }
+.lever-toggle.is-on {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  font-weight: 600;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(15,118,110,0.15);
+}
+.lever-toggle__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.18s ease;
+}
+.lever-toggle.is-on .lever-toggle__icon {
+  background: var(--accent);
+  color: white;
+}
+.prompt-output {
+  background: #F3F4F6;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  font-family: ui-monospace, 'SF Mono', monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+  margin-bottom: var(--space-3);
+  min-height: 80px;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+}
+
+/* === Animationen (F) === */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.phase-content.is-active {
+  animation: fadeSlideIn 0.28s ease;
+}
+
+@keyframes successPulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.copy-btn.is-copied { animation: successPulse 0.5s ease; }
+
+@keyframes celebrate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05) rotate(-1deg); }
+  100% { transform: scale(1); }
+}
+#mark-done-btn.is-done {
+  animation: celebrate 0.6s ease;
+  background: var(--success) !important;
+}
+
+/* === Abschluss-Karte (D) === */
+.finale-card {
+  background: linear-gradient(135deg, #0F766E 0%, #115E59 100%);
+  color: white;
+  border-radius: 18px;
+  padding: var(--space-5) var(--space-4);
+  margin-top: var(--space-4);
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(15,118,110,0.25);
+}
+.finale-card h2 {
+  margin: 0 0 var(--space-3);
+  font-size: 26px;
+  color: white;
+}
+.finale-hebel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  margin: var(--space-4) auto;
+  max-width: 480px;
+}
+.finale-hebel__item {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: var(--space-3);
+  text-align: left;
+}
+.finale-hebel__icon { font-size: 28px; display: block; margin-bottom: 6px; }
+.finale-hebel__label { font-weight: 700; font-size: 15px; }
+.finale-hebel__hint { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+.finale-card__signature { margin-top: var(--space-4); font-style: italic; opacity: 0.95; }
+@media (max-width: 600px) {
+  .finale-hebel { grid-template-columns: 1fr; }
 }

@@ -10,15 +10,15 @@ window.LESSON_01 = {
       type: 'interface-find',
       title: 'Die wichtigsten Knöpfe',
       question: 'Mach in deinem ChatGPT-Tab die folgenden Stellen einmal sichtbar — und hak sie unten ab.',
-      placeholder: 'Chrissi, mach hier später einen Screenshot deiner ChatGPT-Oberfläche und ersetze die Datei assets/screenshots/01-overview.png.',
-      image: null,
+      placeholder: 'Schema der ChatGPT-Oberflaeche.',
+      image: 'assets/illustrations/chatgpt-interface-schema.svg',
       targets: [
-        { x: 0, y: 0, w: 25, h: 100, label: 'Linke Seitenleiste mit deinen Chats' },
-        { x: 30, y: 90, w: 60, h: 8, label: 'Eingabefeld unten in der Mitte' },
-        { x: 35, y: 92, w: 4, h: 6, label: 'Büroklammer für Datei-Uploads' },
-        { x: 85, y: 92, w: 4, h: 6, label: 'Mikrofon-Symbol zum Diktieren' },
-        { x: 30, y: 5, w: 30, h: 5, label: 'Modell-Anzeige + Thinking-Toggle' },
-        { x: 90, y: 5, w: 8, h: 8, label: 'Profil-Menü (deine Initialen oben rechts)' }
+        { x: 0, y: 7, w: 25, h: 93, label: 'Linke Seitenleiste mit deinen Chats' },
+        { x: 30, y: 82, w: 67, h: 12, label: 'Eingabefeld unten in der Mitte' },
+        { x: 30, y: 84, w: 5, h: 9, label: 'Büroklammer für Datei-Uploads' },
+        { x: 89, y: 84, w: 4, h: 9, label: 'Mikrofon-Symbol zum Diktieren' },
+        { x: 30, y: 11, w: 23, h: 7, label: 'Modell-Anzeige + Thinking-Toggle' },
+        { x: 93, y: 10, w: 6, h: 9, label: 'Profil-Menü (deine Initialen oben rechts)' }
       ]
     },
     {

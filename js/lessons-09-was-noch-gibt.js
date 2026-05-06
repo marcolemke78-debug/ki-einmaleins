@@ -44,6 +44,12 @@ window.LESSON_09 = {
         'Ich fühle mich nicht mehr "blöd", wenn was nicht klappt — ich weiß, an welcher Stellschraube ich drehen kann.'
       ],
       note: 'Du hast es drauf, Chrissi 💚 — vielen Dank, dass du dich darauf eingelassen hast. Du wirst merken: ChatGPT wird ab jetzt dein Werkzeug, nicht dein Mysterium.'
+    },
+    {
+      type: 'finale-card',
+      title: 'Du hast es drauf, Chrissi 💚',
+      body: 'Diese vier Hebel begleiten dich ab jetzt bei jedem Prompt:',
+      signature: 'Mit allem, was du jetzt weißt, wirst du ChatGPT ab heute anders nutzen. Pass gut auf dich auf — Marco'
     }
   ]
 };

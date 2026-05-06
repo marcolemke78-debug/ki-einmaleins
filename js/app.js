@@ -4,6 +4,19 @@ const LESSONS = [
   window.LESSON_08, window.LESSON_09
 ];
 
+const LESSON_ICONS = {
+  0: '✨',
+  1: '🪟',
+  2: '🎯',
+  3: '🛡️',
+  4: '📝',
+  5: '🧹',
+  6: '📁',
+  7: '🖼️',
+  8: '🎭',
+  9: '🎉'
+};
+
 let currentLessonId = null;
 
 function renderSidebar() {
@@ -16,6 +29,7 @@ function renderSidebar() {
     if (Progress.isDone(lesson.id)) btn.classList.add('is-done');
     if (lesson.id === currentLessonId) btn.classList.add('is-active');
     btn.innerHTML = `
+      <span class="lesson-link__icon" aria-hidden="true">${LESSON_ICONS[lesson.id] || ''}</span>
       <span class="lesson-link__check">${Progress.isDone(lesson.id) ? '✓' : ''}</span>
       <span class="lesson-link__title">${lesson.title}</span>
     `;
