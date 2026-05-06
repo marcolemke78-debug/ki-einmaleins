@@ -4,7 +4,63 @@ window.LESSON_00 = {
   intro: { html: `
     <p>Hi Chrissi 👋</p>
     <p>Bevor wir irgendwas erklären, machst du jetzt einfach was Lustiges mit ChatGPT — das dauert keine 2 Minuten.</p>
-    <p>Du brauchst:</p>
+
+    <h3>Dein Lernpfad — 10 kurze Lektionen</h3>
+    <div class="timeline timeline--path" role="list">
+      <div class="timeline__entry is-now" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">✨</div>
+        <div class="timeline__date">0</div>
+        <div class="timeline__title">Erste 5 Min</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">🪟</div>
+        <div class="timeline__date">1</div>
+        <div class="timeline__title">Chat-Fenster</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">🎯</div>
+        <div class="timeline__date">2</div>
+        <div class="timeline__title">Prompten</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">🛡️</div>
+        <div class="timeline__date">3</div>
+        <div class="timeline__title">Datenschutz</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">📝</div>
+        <div class="timeline__date">4</div>
+        <div class="timeline__title">Praxis</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">🧹</div>
+        <div class="timeline__date">5</div>
+        <div class="timeline__title">Chat-Hygiene</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">📁</div>
+        <div class="timeline__date">6</div>
+        <div class="timeline__title">Dateien</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">🖼️</div>
+        <div class="timeline__date">7</div>
+        <div class="timeline__title">Bilder</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">🎭</div>
+        <div class="timeline__date">8</div>
+        <div class="timeline__title">Halluzinationen</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">🎉</div>
+        <div class="timeline__date">9</div>
+        <div class="timeline__title">Ausblick</div>
+      </div>
+    </div>
+    <p style="font-size:14px;color:var(--text-muted);margin-top:-8px;">Du bist <strong style="color:var(--success);">hier</strong>. Pro Lektion 5–15 Minuten — du musst nichts an einem Stück machen.</p>
+
+    <p>Du brauchst nur:</p>
     <ul>
       <li>Einen offenen ChatGPT-Tab (chatgpt.com)</li>
       <li>Diesen Tab hier daneben</li>

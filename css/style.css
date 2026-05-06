@@ -628,3 +628,50 @@ details.expand > summary {
   .timeline__dot { top: 4px; left: 0; transform: none; }
   .timeline--cutoff .timeline__gap { text-align: left; padding-left: 50px; }
 }
+
+/* === Timeline-Path: kompakte Variante fuer 10 Lektionen === */
+.timeline--path {
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+}
+.timeline--path::before {
+  content: '';
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 14px;
+  height: 3px;
+  background: linear-gradient(to right, var(--accent-light), var(--accent), var(--accent-dark));
+  border-radius: 2px;
+  z-index: 0;
+}
+.timeline--path .timeline__entry { padding-top: 36px; text-align: center; }
+.timeline--path .timeline__dot {
+  width: 28px; height: 28px;
+  font-size: 15px;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.timeline--path .timeline__date {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 1px;
+}
+.timeline--path .timeline__title {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 0;
+  line-height: 1.25;
+}
+.timeline--path .timeline__entry.is-now .timeline__dot {
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px rgba(22,163,74,0.3);
+}
+.timeline--path .timeline__entry.is-now .timeline__title { color: var(--success); font-weight: 700; }
+
+@media (max-width: 1023px) {
+  .timeline--path { grid-template-columns: repeat(5, 1fr); }
+  .timeline--path::before { display: none; }
+}
+@media (max-width: 600px) {
+  .timeline--path { grid-template-columns: repeat(2, 1fr); }
+}
