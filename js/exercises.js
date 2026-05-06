@@ -12,6 +12,9 @@ const Exercises = {
     scope.querySelectorAll('[data-exercise="multiple-choice"]').forEach((root) => {
       Exercises.bindMultipleChoice(root);
     });
+    scope.querySelectorAll('[data-exercise="prompt-comparison"]').forEach((root) => {
+      Exercises.bindPromptComparison(root);
+    });
   },
 
   copyFromTarget(btn) {
@@ -44,6 +47,48 @@ const Exercises = {
         <div class="feedback" hidden></div>
       </div>
     `;
+  },
+
+  render_prompt_comparison(ex, id) {
+    const cards = ex.prompts.map((p, i) =>
+      `<button class="prompt-card" type="button" data-index="${i}">
+        <div class="prompt-card__label">Prompt ${String.fromCharCode(65 + i)}</div>
+        <div class="prompt-card__text">${Renderer.escapeHtml(p)}</div>
+      </button>`
+    ).join('');
+    return `
+      <div class="card" data-exercise="prompt-comparison"
+           data-correct="${ex.correct}"
+           data-explanation="${Renderer.escapeHtml(ex.explanation || '')}">
+        ${ex.question ? `<h3 class="card__title">${ex.question}</h3>` : ''}
+        <div class="prompt-grid">${cards}</div>
+        <div class="feedback" hidden></div>
+      </div>
+    `;
+  },
+
+  bindPromptComparison(root) {
+    const correct = parseInt(root.dataset.correct, 10);
+    const explanation = root.dataset.explanation;
+    const feedback = root.querySelector('.feedback');
+    root.querySelectorAll('.prompt-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        if (root.dataset.locked === 'true') return;
+        root.dataset.locked = 'true';
+        const i = parseInt(card.dataset.index, 10);
+        const correctEl = root.querySelectorAll('.prompt-card')[correct];
+        correctEl.classList.add('is-correct');
+        if (i === correct) {
+          feedback.className = 'feedback feedback--correct';
+          feedback.innerHTML = '✓ ' + (explanation || 'Richtig!');
+        } else {
+          card.classList.add('is-wrong');
+          feedback.className = 'feedback feedback--wrong';
+          feedback.innerHTML = explanation || 'Schau dir Prompt ' + String.fromCharCode(65 + correct) + ' nochmal an.';
+        }
+        feedback.hidden = false;
+      });
+    });
   },
 
   bindMultipleChoice(root) {

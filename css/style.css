@@ -319,3 +319,25 @@ details.expand > summary {
   .lesson-list { grid-template-columns: 1fr; }
   html, body { font-size: 16px; }
 }
+
+.prompt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+.prompt-card {
+  text-align: left;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  cursor: pointer;
+  font: inherit;
+}
+.prompt-card:hover { border-color: var(--accent); }
+.prompt-card.is-correct { border-color: var(--success); background: #F0FDF4; }
+.prompt-card.is-wrong { border-color: var(--error); background: #FEF2F2; }
+.prompt-card__label { font-weight: 600; color: var(--accent); margin-bottom: var(--space-1); }
+.prompt-card__text { font-family: ui-monospace, monospace; font-size: 14px; }
+@media (max-width: 1023px) { .prompt-grid { grid-template-columns: 1fr; } }
