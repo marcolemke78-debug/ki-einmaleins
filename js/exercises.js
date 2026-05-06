@@ -24,6 +24,9 @@ const Exercises = {
     scope.querySelectorAll('[data-exercise="hallucination-mark"]').forEach((root) => {
       Exercises.bindHallucinationMark(root);
     });
+    scope.querySelectorAll('[data-exercise="data-decision"]').forEach((root) => {
+      Exercises.bindDataDecision(root);
+    });
   },
 
   copyFromTarget(btn) {
@@ -264,6 +267,53 @@ const Exercises = {
       fb.hidden = false;
       fb.className = 'feedback ' + (correctCount === problematic.length ? 'feedback--correct' : 'feedback--wrong');
       fb.innerHTML = `Du hast ${correctCount} von ${problematic.length} Halluzinationen erkannt. Grun = richtig markiert, Gelb = ubersehen, Rot = falschlich markiert.`;
+    });
+  },
+
+  render_data_decision(ex, id) {
+    const casesHtml = ex.cases.map((c, i) =>
+      `<div class="data-case" data-case="${i}" data-correct="${c.correct}"
+            data-explanation="${Renderer.escapeHtml(c.explanation || '')}">
+        <div class="data-case__text">${Renderer.escapeHtml(c.text)}</div>
+        <div class="data-case__buttons">
+          <button class="btn btn--ghost data-decision-btn" type="button" data-choice="rein">Darf so rein</button>
+          <button class="btn btn--ghost data-decision-btn" type="button" data-choice="anonymisieren">Anonymisieren</button>
+          <button class="btn btn--ghost data-decision-btn" type="button" data-choice="gar-nicht">Lieber gar nicht</button>
+        </div>
+        <div class="feedback" hidden></div>
+      </div>`
+    ).join('');
+    return `
+      <div class="card" data-exercise="data-decision">
+        ${ex.question ? `<h3 class="card__title">${ex.question}</h3>` : ''}
+        ${casesHtml}
+      </div>
+    `;
+  },
+
+  bindDataDecision(root) {
+    root.querySelectorAll('.data-case').forEach((c) => {
+      const correct = c.dataset.correct;
+      const explanation = c.dataset.explanation;
+      const fb = c.querySelector('.feedback');
+      c.querySelectorAll('.data-decision-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (c.dataset.locked === 'true') return;
+          c.dataset.locked = 'true';
+          const choice = btn.dataset.choice;
+          if (choice === correct) {
+            btn.classList.add('is-correct');
+            fb.className = 'feedback feedback--correct';
+            fb.innerHTML = '✓ Genau — das hast du längst im Gefühl. Profi-Reflex.';
+          } else {
+            btn.classList.add('is-wrong');
+            c.querySelector(`[data-choice="${correct}"]`).classList.add('is-correct');
+            fb.className = 'feedback feedback--wrong';
+            fb.innerHTML = explanation || 'Schau nochmal hin — was würdest du auch deiner Kollegin nicht über Familie X erzählen?';
+          }
+          fb.hidden = false;
+        });
+      });
     });
   },
 
