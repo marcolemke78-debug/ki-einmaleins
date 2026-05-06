@@ -1,21 +1,26 @@
-# KI-Einmaleins für Chrissi — Design (V2)
+# KI-Einmaleins für Chrissi — Design (V3)
 
-**Status:** Überarbeitet nach Reviewer-Agent-Feedback, zum Marco-Review
+**Status:** Final nach Marcos Entscheidungen — bereit für Implementation Plan
 **Datum:** 2026-05-06
 **Repo (geplant):** `marcolemke78-debug/ki-einmaleins`
 **URL (geplant):** `marcolemke78-debug.github.io/ki-einmaleins/`
 
-> **Was sich gegenüber V1 geändert hat:**
-> - Lektionsreihenfolge umgebaut: Theorie & Historie nicht mehr als Block 1, sondern Theorie-Häppchen integriert + Historie als Anhang in Lektion 9
-> - **Datenschutz vorgezogen** auf Lektion 3 (vor jede Praxis-Lektion mit echten Inhalten)
-> - **AVV-Problem von ChatGPT Free** explizit benannt
+> **Was sich gegenüber V2 geändert hat (Marcos Entscheidungen):**
+> - **Akzentfarbe:** Petrol #0F766E final
+> - **Hauptzielgerät:** iPad Pro 11" (Querformat) — Chrissis Hauptarbeitsgerät, Layout primär dafür
+> - **Screenshots:** Chrissi macht ihre eigenen — Programm wird mit Platzhaltern ausgeliefert, Dateipfade dokumentiert, sodass Bilder ohne Code-Änderung ersetzt werden können
+> - **Lektion 3 (Datenschutz):** Komplett neu in einem motivierenden, Profi-orientierten Ton — keine Risiko-Schock-Liste, sondern „du kannst Datenschutz längst, wir übersetzen ihn nur aufs neue Werkzeug"
+> - **Erfolgskriterium „Memory aus" gestrichen** — bleibt als Profi-Tipp in Lektion 5, nicht als Lernziel
+> - **Reihenfolge Datenschutz vs. Prompten:** bleibt aktuell (Datenschutz Lektion 3, vor Praxis-Lektion 4) — Lektion 2 nutzt fiktive Inhalte, da kommen keine echten Daten ins Spiel
+>
+> **Aus V2 übernommen:**
+> - Lektionsreihenfolge mit integrierter Mini-Theorie + Historie als Anhang in Lektion 9
 > - Datei- und Bilder-Limits realistisch eingeplant (3 Uploads/24 h gesamt, max. 2 Bilder)
-> - Modell-Auswahl: Free hat aktuell GPT-5.3 Instant + Thinking-Toggle, kein Dropdown
-> - Pain-First-Lektion 2 (Prompten) mit Vorab-Hinweis abgefedert
+> - Modell-Auswahl: Free hat GPT-5.3 Instant + Thinking-Toggle, kein Dropdown
+> - Pain-First-Lektion 2 mit Vorab-Hinweis abgefedert
 > - ChatGPT-Direktlink (`?q=…`) gestrichen — nur Copy-Button
-> - „Eigene Anwendung" als Selbst-Checkliste, nicht App-Validierung
-> - Memory-Feature: explizite Empfehlung „aus" für Berufliches
-> - Neue Sub-Missionen: Diktieren, Vorlesen, „Einfache Sprache", Antwort kopieren/speichern
+> - „Eigene Anwendung" als Selbst-Checkliste
+> - Sub-Missionen: Diktieren, Vorlesen, „Einfache Sprache", Antwort kopieren/speichern
 
 ## Kontext und Motivation
 
@@ -43,12 +48,12 @@ Wenn Chrissi sich aktuell „blöd" fühlt, weil ChatGPT enttäuschende Antworte
 - Referenz-Implementierung: `~/Desktop/LE_C_Claude_Code/app/`
 - Fortschritt persistent in `localStorage`
 - **Deployment:** GitHub Pages (öffentliches Repo)
-- **Geräte:** Hauptzielgerät Laptop/Browser. Vor Fertigmeldung iPad/iOS-Safari-Kompatibilität prüfen. Touch-Targets ≥ 44 px.
+- **Geräte:** **Hauptzielgerät iPad Pro 11" (Querformat)** — Chrissis Hauptarbeitsgerät. Layout primär für 11"-Tablet optimieren: Tap-First (keine Hover-Abhängigkeit), Touch-Targets ≥ 44 px, ausreichend Padding für Daumen-Bedienung, Schriftgrößen für 11"-Display. Browser am Laptop als Sekundär-Use-Case (responsiv). Vor Fertigmeldung Pflicht-Test in iPad-Safari (Quer- und Hochformat).
 
 ### Tonalität & Look
 - **Anrede:** per du, persönlich („Hi Chrissi, …", „Probier mal …")
-- **Akzentfarbe:** Vorschlag warmes Petrol/Türkis (#0F766E oder dunkler #115E59 für iPad-Außennutzung) — im Review final entscheiden
-- **ChatGPT-Bezug:** echte ChatGPT-Screenshots (Free), nicht stilisiert
+- **Akzentfarbe:** Petrol/Türkis **#0F766E** (final). Im CSS als `--accent` zentral definiert.
+- **ChatGPT-Bezug:** Screenshots werden von Chrissi selbst aus ihrem ChatGPT-Account gemacht. Programm liefert **Platzhalter-Bilder** (neutrale Boxen mit Beschriftung „Hier kommt dein Screenshot der Seitenleiste hin" etc.); Dateipfade in `assets/screenshots/` sind dokumentiert, sodass die Bilder später ohne Code-Änderung einfach ersetzt werden können.
 - **Sprachstil:** wie ein verständnisvoller Kollege — keine Fachsprache ohne Übersetzung („Modell" → „die KI")
 
 ### Datenschutz in den Beispielen
@@ -97,15 +102,26 @@ Statt der klassischen 3-Phasen-Struktur (Erklärung → Beispiel → Übung) nut
 - Mission 2: Gleicher Inhalt mit allen 4 Hebeln → wow-Effekt
 - Mission 3: Sie baut selbst einen Prompt nach dem Schema (`prompt-builder`-Übung)
 
-### Lektion 3 — Datenschutz: Was du nie reinschreibst
-**Ziel:** Vor jeder beruflichen Anwendung wissen, wo die Grenzen liegen. **Pflicht-Lektion vor Lektion 4.**
+### Lektion 3 — Du als Profi: Datenschutz souverän handhaben
+**Ziel:** Chrissi merkt: Datenschutz ist nichts Neues, was sie *bremst*, sondern eine Profi-Haltung, die sie als pädagogische Fachkraft schon hat. Wir übertragen sie nur aufs neue Werkzeug.
 
-- **Kernregel 1 — Keine echten Daten:** Keine Kindernamen, Klarnamen, Beobachtungsbögen mit echten Daten, Adressen, Geburtsdaten, Diagnosen, Familien-Hintergründe.
-- **Kernregel 2 — AVV-Problem:** ChatGPT Free hat **keinen Auftragsverarbeitungsvertrag (AVV)**. Für berufliche personenbezogene Daten ist das **rechtlich nicht zulässig**, auch wenn pseudonymisiert. → Konsequenz: Beruflich nur **vollständig anonymisierte oder fiktive Inhalte** nutzen.
-- **Kernregel 3 — Trägervorgaben:** Vor erster beruflicher Nutzung beim Träger / der Leitung klären, ob KI-Nutzung überhaupt erlaubt ist. Manche Träger verbieten es komplett.
-- **Pseudonymisierung als Workaround:** „Kind A", „Familie X", „Kollegin K" statt Namen. Aber: Bei Beobachtungsbögen reicht das oft nicht.
-- **Übungstyp:** Entscheidungs-Übung. Mehrere Beispiel-Texte, Chrissi entscheidet pro Text: „Darf so rein? / Anonymisieren? / Niemals rein."
-- **Empfehlung:** Memory-Feature ausschalten (Lektion 5) und „Temporary Chat" für alles Berufliche.
+**Tonalität:** Ermutigend, nicht warnend. Keine Schock-Liste, keine juristische Drohgebärde. Stattdessen: „Du kannst das längst — hier ist die Übersetzung."
+
+**Eröffnung (Intro-HTML):**
+> „Hi Chrissi, du gehst täglich mit sensiblen Infos um — Beobachtungsbögen, Familiengeschichten, Entwicklungsstände. Da hast du längst ein Bauchgefühl: ‚das geht / das geht nicht'. Genau dieses Gefühl ist auch hier dein bester Kompass. Wir machen das in fünf Minuten."
+
+**Drei Profi-Regeln (statt Verbots-Katalog):**
+
+1. **Echte Namen bleiben draußen.** Statt „Lara M., 4 Jahre, Eltern getrennt" einfach „ein 4-jähriges Kind, dessen Eltern sich kürzlich getrennt haben". Reicht für jeden Prompt — und ist sogar oft *besser*, weil die KI sich dann nicht an einem Namen verzettelt.
+2. **Einmal beim Träger nachfragen.** Manche Kitas/Schulen haben klare Hausregeln zu KI. Frag einmal kurz nach — dann weißt du Bescheid und musst nicht jedes Mal überlegen.
+3. **Profi-Modus für Berufliches:** Memory aus + „Temporary Chat" (kommt in Lektion 5). Damit ist klar: was du eingibst, wird nicht gespeichert. Wie ein Gespräch, das nach dem Schließen vergessen ist.
+
+**Hintergrund-Info im Aufklappkasten** („Wenn du es genau wissen willst"): Kurze Erklärung, dass ChatGPT Free keinen Auftragsverarbeitungsvertrag (AVV) hat und deshalb für personenbezogene Berufsdaten rechtlich nicht vorgesehen ist. Sachlich, nicht angsteinflößend, aufklappbar — wer mehr wissen will, findet's; wer nicht, scrollt vorbei.
+
+**Übung — `data-decision`:** 5-6 Beispiel-Texte, Chrissi entscheidet pro Text: „Darf so rein / besser anonymisieren / lieber gar nicht". Feedback ermutigend formuliert: „Genau — das hast du längst im Gefühl. Das ist purer Profi-Reflex." Kein „Falsch!", sondern bei Fehl-Antworten: „Schau nochmal hin — was würdest du auch deiner Kollegin nicht über Familie X erzählen?"
+
+**Schlusssatz:**
+> „Mit dieser Haltung gehen wir jetzt in deine Erzieher-Praxis. Du hast nichts zu verlieren — nur Werkzeug-Sicherheit zu gewinnen."
 
 ### Lektion 4 — Prompten in der Praxis: Erzieher-Alltag
 **Ziel:** Transfer in den Beruf. Alle Beispiele mit fiktiven Familien.
@@ -130,7 +146,7 @@ Konkrete Missionen:
 - Chat löschen (3-Punkte-Menü)
 - Archivieren
 - Chats in der Seitenleiste finden
-- **Memory-Feature gezielt steuern:** Was ist Memory? Wo aus-/anschalten? **Empfehlung für Chrissi: Memory standardmäßig AUS** + „Temporary Chat" für alles Berufliche, weil sonst versehentliche Eingaben gespeichert werden.
+- **Memory-Feature kennen — Profi-Tipp:** ChatGPT „merkt" sich neuerdings Sachen aus alten Chats („Memory"). Cool für privat („mein Hund heißt Bello"), aber für Berufliches lieber **Temporary Chat** nehmen — das ist wie ein Browser-Inkognito-Tab: nichts wird gemerkt. Wir zeigen kurz, wo der Memory-Schalter liegt und wie du den Temporary Chat startest. Du entscheidest selbst, ob du Memory generell aus haben willst — viele Profis machen das so, ist aber kein Muss.
 
 ### Lektion 6 — Mit Dateien arbeiten
 **Ziel:** Pain-Point-Auflösung. **Mit Limit-Bewusstsein.**
@@ -194,7 +210,7 @@ Die Blaupause-Übungstypen aus Logik-Programmen (Wahrheitstabelle, Binärrechnun
 - `js/exercises.js` — komplett neu, da neue Übungstypen
 - `js/lessons-00-erste-5-min.js` … `js/lessons-09-was-noch-gibt.js` — Lektionsdaten
 - **Copy-Button-Komponente** (Clipboard-API + visuelles Feedback „Kopiert!" + sekundärer Hinweis „Wechsle jetzt zu deinem ChatGPT-Tab")
-- `assets/screenshots/` — echte ChatGPT-Screenshots für Interface-Touren (von Marco oder Chrissi zu liefern)
+- `assets/screenshots/` — Platzhalter-Bilder mit klaren Beschriftungen ausliefern. Chrissi macht ihre eigenen Screenshots aus ihrem ChatGPT-Account (in Lektion 1) und ersetzt die Platzhalter durch Drag-and-Drop in den Ordner. Konvention: feste Dateinamen wie `01-seitenleiste.png`, `02-eingabefeld.png` etc. — dokumentiert in `assets/screenshots/README.md`.
 
 ### Lektionsdaten-Struktur (mit optionalen Phasen)
 ```javascript
@@ -235,13 +251,17 @@ Chrissi nach dem Programm:
 2. Fängt einen neuen Chat an, wenn ein Thema wechselt — automatisch
 3. Lädt PDFs hoch und arbeitet damit selbstverständlich (im Limit)
 4. Erkennt Halluzinationen und prüft Faktenangaben
-5. **Gibt nichts mit echten Kinder- oder Familiendaten in ChatGPT ein**
-6. **Hat Memory aus, nutzt Temporary Chat für Berufliches**
-7. Hat ihren ersten Elternbrief mit ChatGPT-Hilfe verfasst und ist stolz darauf
+5. Behandelt Berufsdaten als Profi: anonymisiert oder fiktiv, kein „echter Lara M."
+6. Hat ihren ersten Elternbrief mit ChatGPT-Hilfe verfasst und ist stolz darauf
+7. **Fühlt sich nicht mehr „blöd", wenn was nicht klappt — sondern weiß, an welcher Stellschraube sie drehen kann.**
 
-## Offene Punkte für Marco-Review
-1. **Akzentfarbe:** Petrol #0F766E, dunkler #115E59 für iPad-Sonnenlicht-Kontrast, Standard-Blau, oder was anderes?
-2. **Screenshots:** Wer macht die ChatGPT-Screenshots? Du, oder soll Chrissi das spielerisch im Programm tun (eigene Oberfläche fotografieren)?
-3. **Lektion 3 (Datenschutz) Tonalität:** Aktuell sehr explizit auf Risiken — passt das, oder soll der Ton weicher / motivierender werden, damit Chrissi keine Angst kriegt und das Programm lieber abbricht?
-4. **Erfolgskriterium 6:** Sollen wir wirklich Memory-Aus zur expliziten Lernziel-Hürde machen, oder reicht der Hinweis in Lektion 5?
-5. **Reihenfolge Lektion 3 vs. Lektion 2:** Aktuell Theorie-Häppchen in 2, Datenschutz in 3, Praxis ab 4. Alternative: Datenschutz schon vor Lektion 2 (also Lektion 1.5), damit gar keine personenbezogenen Daten je versehentlich getippt werden. Bevorzugt?
+## Marcos Entscheidungen (V3)
+
+| Punkt | Entscheidung |
+|---|---|
+| Akzentfarbe | **Petrol #0F766E** final |
+| Hauptzielgerät | **iPad Pro 11" Querformat** (Chrissis Hauptarbeitsgerät) |
+| Screenshots | **Chrissi macht selbst** — Platzhalter im Programm, einfaches Ersetzen ohne Code-Änderung |
+| Lektion 3 Tonalität | **Motivierend, Profi-orientiert** statt Risiko-Schock-Liste |
+| Memory-Aus als Erfolgskriterium | **Gestrichen** — bleibt nur als entspannter Tipp in Lektion 5 |
+| Reihenfolge Datenschutz | **Bleibt Lektion 3** (vor Praxis, nach Prompting-Grundlagen) — Lektion 2 nutzt fiktive Inhalte, da kommen keine echten Daten ins Spiel |
