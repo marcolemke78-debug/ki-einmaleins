@@ -6,7 +6,7 @@ window.LESSON_09 = {
     <h3>Mini-Historie in drei Stationen</h3>
     <ul>
       <li><strong>November 2022:</strong> ChatGPT-Launch — der Aha-Moment für die ganze Welt. Innerhalb von 5 Tagen 1 Million Nutzer.</li>
-      <li><strong>2024:</strong> KI lernt sehen und sprechen. Bilder, Sprache, Mehrsprachigkeit werden Standard.</li>
+      <li><strong>2023/24:</strong> KI lernt sehen und sprechen. Bilder, Sprache, Mehrsprachigkeit werden Standard.</li>
       <li><strong>2025/26:</strong> Agenten — die KI klickt selbst. Sie öffnet Tabs, recherchiert, bucht Termine. Wir stehen erst am Anfang.</li>
     </ul>
     <h3>Andere KI-Werkzeuge</h3>
@@ -18,7 +18,7 @@ window.LESSON_09 = {
     <p>Mein Tipp: Bleib erstmal bei ChatGPT, du kannst hier alles. Wenn du in 6 Monaten neugierig bist, schau die anderen mal an. Marco hilft.</p>
     <details class="expand">
       <summary>Wann lohnt sich ChatGPT Plus?</summary>
-      <p>Plus (ca. 20 Euro/Monat, Stand 2026) gibt dir: höhere Datei- und Bilder-Limits, schnellere Antworten, Zugriff auf bessere Modelle, Bildgenerierung mit DALL-E. Lohnt sich, wenn du <em>regelmäßig</em> mehr als 3 Datei-Uploads/Tag brauchst oder Bildgenerierung nutzen willst. Für deinen Einstieg reicht Free völlig.</p>
+      <p>Plus (in Deutschland 23 € pro Monat, Stand Mai 2026) gibt dir: höhere Datei- und Bilder-Limits, schnellere Antworten, Zugriff auf bessere Modelle, Bildgenerierung mit DALL-E. Lohnt sich, wenn du <em>regelmäßig</em> mehr als 3 Datei-Uploads/Tag brauchst oder Bildgenerierung nutzen willst. Für deinen Einstieg reicht Free völlig.</p>
     </details>
   ` },
   missions: [
@@ -49,7 +49,7 @@ window.LESSON_09 = {
       type: 'finale-card',
       title: 'Du hast es drauf, Chrissi 💚',
       body: 'Diese vier Hebel begleiten dich ab jetzt bei jedem Prompt:',
-      signature: 'Mit allem, was du jetzt weißt, wirst du ChatGPT ab heute anders nutzen. Pass gut auf dich auf — Marco'
+      signature: 'Mit allem, was du jetzt weißt, wirst du ChatGPT ab heute anders nutzen. Pass gut auf dich auf. Marco'
     }
   ]
 };
