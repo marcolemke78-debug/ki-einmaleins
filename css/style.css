@@ -383,4 +383,10 @@ details.expand > summary {
 .data-case__text { font-style: italic; margin-bottom: var(--space-2); padding: var(--space-2); background: #F3F4F6; border-radius: 8px; }
 .data-case__buttons { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .data-decision-btn.is-correct { background: var(--success); color: white; border-color: var(--success); }
+
+.checklist-item {
+  display: flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-2); min-height: var(--tap-min); cursor: pointer;
+}
+.checklist-item input { width: 22px; height: 22px; accent-color: var(--accent); }
 .data-decision-btn.is-wrong { background: #FEF2F2; color: var(--error); border-color: var(--error); }

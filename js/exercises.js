@@ -340,7 +340,23 @@ const Exercises = {
         }
       });
     });
-  }
+  },
+
+  render_self_checklist(ex, id) {
+    const items = ex.items.map((it, i) =>
+      `<label class="checklist-item">
+        <input type="checkbox" data-index="${i}" />
+        <span>${Renderer.escapeHtml(it)}</span>
+      </label>`
+    ).join('');
+    return `
+      <div class="card" data-exercise="self-checklist">
+        ${ex.question ? `<h3 class="card__title">${ex.question}</h3>` : ''}
+        <div class="checklist">${items}</div>
+        ${ex.note ? `<p class="copy-hint">${ex.note}</p>` : ''}
+      </div>
+    `;
+  },
 };
 
 window.Exercises = Exercises;
