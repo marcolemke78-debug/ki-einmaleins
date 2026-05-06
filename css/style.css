@@ -1,0 +1,321 @@
+:root {
+  --accent: #0F766E;
+  --accent-dark: #115E59;
+  --accent-light: #99F6E4;
+  --bg: #FAFAF9;
+  --surface: #FFFFFF;
+  --text: #1F2937;
+  --text-muted: #6B7280;
+  --border: #E5E7EB;
+  --success: #16A34A;
+  --warning: #D97706;
+  --error: #DC2626;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --tap-min: 44px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* === Sidebar === */
+.sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: var(--space-4) var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar__header h1 {
+  font-size: 22px;
+  margin: 0 0 var(--space-1);
+  color: var(--accent);
+}
+
+.sidebar__subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.progress {
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width .3s ease;
+}
+
+.lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.lesson-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  min-height: var(--tap-min);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  font: inherit;
+  font-size: 15px;
+}
+
+.lesson-link:hover { background: rgba(15,118,110,0.06); }
+.lesson-link.is-active { background: var(--accent-light); color: var(--accent-dark); font-weight: 600; }
+.lesson-link__check {
+  width: 20px; height: 20px; flex-shrink: 0;
+  border-radius: 50%; border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+}
+.lesson-link.is-done .lesson-link__check {
+  border-color: var(--success); color: white; background: var(--success);
+}
+
+.reset-btn {
+  margin-top: auto;
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  font: inherit;
+  min-height: var(--tap-min);
+}
+.reset-btn:hover { color: var(--error); border-color: var(--error); }
+
+/* === Main === */
+.main {
+  flex: 1;
+  padding: var(--space-5) var(--space-6);
+  max-width: 880px;
+}
+.loading { color: var(--text-muted); }
+
+.lesson-title {
+  font-size: 30px;
+  margin: 0 0 var(--space-4);
+  color: var(--accent-dark);
+}
+
+.phase-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+.phase-tab {
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  min-height: var(--tap-min);
+}
+.phase-tab.is-active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+
+.phase-content { display: none; }
+.phase-content.is-active { display: block; }
+
+.phase-content h2 {
+  font-size: 22px;
+  margin-top: 0;
+  color: var(--accent-dark);
+}
+
+/* === Mission/Karte === */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow);
+}
+
+.card--mission {
+  border-left: 4px solid var(--accent);
+}
+
+.card__title {
+  font-size: 18px;
+  margin: 0 0 var(--space-2);
+}
+
+.card__instruction {
+  color: var(--text);
+  margin-bottom: var(--space-3);
+}
+
+/* === Copy-Button === */
+.prompt-box {
+  background: #F3F4F6;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  font-family: ui-monospace, 'SF Mono', monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+  position: relative;
+  margin-bottom: var(--space-3);
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--accent);
+  color: white;
+  border: 0;
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: var(--tap-min);
+}
+.copy-btn:hover { background: var(--accent-dark); }
+.copy-btn.is-copied { background: var(--success); }
+
+.copy-hint {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: var(--space-2);
+}
+
+/* === Buttons generisch === */
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: var(--accent);
+  color: white;
+  border: 0;
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: var(--tap-min);
+}
+.btn--ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* === Multiple-Choice === */
+.choice {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--space-3);
+  margin-bottom: var(--space-2);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font: inherit;
+  cursor: pointer;
+  min-height: var(--tap-min);
+}
+.choice:hover { border-color: var(--accent); }
+.choice.is-correct { border-color: var(--success); background: #F0FDF4; }
+.choice.is-wrong { border-color: var(--error); background: #FEF2F2; }
+.feedback {
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  margin-top: var(--space-2);
+  font-size: 15px;
+}
+.feedback--correct { background: #F0FDF4; color: var(--success); }
+.feedback--wrong { background: #FEF2F2; color: var(--error); }
+
+/* === Aufklappkasten === */
+details.expand {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin: var(--space-3) 0;
+}
+details.expand > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* === Platzhalter für Screenshots === */
+.screenshot-placeholder {
+  background: #F3F4F6;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  margin: var(--space-3) 0;
+}
+
+/* === iPad: Querformat als Hauptlayout === */
+@media (min-width: 1024px) {
+  .main { padding: var(--space-6); }
+}
+
+/* === iPad: Hochformat & kleine Tablets === */
+@media (max-width: 1023px) {
+  body { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: static; }
+  .lesson-list { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .main { padding: var(--space-4); max-width: none; }
+}
+
+/* === iPhone === */
+@media (max-width: 600px) {
+  .lesson-list { grid-template-columns: 1fr; }
+  html, body { font-size: 16px; }
+}
