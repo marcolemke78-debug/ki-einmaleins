@@ -11,7 +11,7 @@ window.LESSON_05 = {
     {
       type: 'live-mission',
       title: 'Mission: Den Effekt selbst spüren',
-      instruction: '<p>Wenn du noch einen alten, vollen Chat hast (oder einen, in dem du schon viel hin und her gechattet hast), probier dort eine neue Frage. Dann: oben links auf "Neuer Chat", gleiche Frage. Vergleich.</p><p>Falls du keinen alten vollen Chat hast — überspring diese Mission und gehe direkt zu Teil B unten.</p>',
+      instruction: '<p>Du brauchst einen vollen Chat, um den Effekt zu spüren. Falls du keinen alten hast, fülle einen schnell auf: chatte 5-6 Mal hin und her zu wechselnden Themen (Geburtstag, Lieblingsbuch, Wetter, Lieblingsessen…). Stell dann eine neue Frage und beobachte die Antwort.</p><p>Danach: oben links auf "Neuer Chat", die gleiche Frage stellen — vergleichen.</p>',
       promptToCopy: 'Fass mir in 3 Punkten zusammen, was wir gerade besprochen haben.',
       reflection: {
         type: 'multiple-choice',
@@ -39,7 +39,7 @@ window.LESSON_05 = {
       type: 'self-checklist',
       question: 'Profi-Tipp: Memory & Temporary Chat (entspannt)',
       items: [
-        'Ich weiß, dass ChatGPT seit 2025 ein "Memory"-Feature hat — speichert Sachen aus alten Chats. Cool für privat.',
+        'Ich weiss, dass ChatGPT ein "Memory"-Feature hat (seit 2024/25, in Free als abgespeckte Variante) — es merkt sich Sachen aus alten Chats. Cool für privat.',
         'Für berufliche Sachen kann ich den "Temporary Chat" nutzen — wie ein Inkognito-Fenster: nichts wird gemerkt.',
         'Memory-Schalter finde ich in den Settings (Profil-Menü oben rechts → Personalization → Memory). Anlassen oder ausmachen ist deine Entscheidung.'
       ],

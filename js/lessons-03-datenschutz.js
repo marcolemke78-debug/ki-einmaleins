@@ -10,8 +10,8 @@ window.LESSON_03 = {
       <li><strong>Profi-Modus für Berufliches:</strong> Memory aus + "Temporary Chat" (zeig ich dir in Lektion 5). Wie ein Gespräch, das nach dem Schließen vergessen ist.</li>
     </ol>
     <details class="expand">
-      <summary>Wenn du es genau wissen willst: Warum Free streng zu sehen ist</summary>
-      <p>ChatGPT Free hat keinen Auftragsverarbeitungsvertrag (AVV) mit deinem Träger — das ist die rechtliche Form, die für berufliche personenbezogene Daten nötig wäre. Konsequenz: Beruflich nur fiktive oder vollständig anonymisierte Inhalte. Mit "echte Namen draußen" bist du auf der sicheren Seite.</p>
+      <summary>Wenn du es genau wissen willst: Warum Free für berufliche Daten nicht das richtige Werkzeug ist</summary>
+      <p>ChatGPT Free hat keinen Auftragsverarbeitungsvertrag (AVV). Heißt: Für berufliche personenbezogene Daten ist die rechtliche Grundlage nicht da — der Schutz kommt aus deinem Beruf, nicht aus dem Tool. Mit "echte Namen draussen" bist du als Profi auf der sicheren Seite, ohne dass du dich einschraenken musst.</p>
     </details>
   ` },
   missions: [
