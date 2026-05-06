@@ -13,6 +13,7 @@ window.LESSON_04 = {
       promptToCopy: 'Du bist Erzieherin in einer Kita. Schreib mir einen Elternbrief: Einladung zum Sommerfest unserer Sonnenblumen-Gruppe (4-6 Jahre) am Freitag, 12. Juli, 15-18 Uhr im Kita-Garten. Eltern und Geschwister willkommen, Picknick wäre schön (jede Familie bringt was mit). Format: maximal 8 Sätze, freundlich, mit Bitte um RSVP bis 5. Juli.',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'War der Brief direkt nutzbar oder hast du ihn umformuliert?',
         options: ['Fast 1:1 nutzbar — nur Kleinigkeiten angepasst', 'Komplett überschrieben', 'Ich habe gar nicht ausprobiert'],
         correct: 0,
@@ -26,6 +27,7 @@ window.LESSON_04 = {
       promptToCopy: 'Du bist Sprachförderkraft in einer Kita. Schlag mir 5 konkrete Sprachförder-Aktivitäten zum Bilderbuch "Der Grüffelo" vor — für eine Kleingruppe von 4 Kindern, 4-5 Jahre, gemischter Sprachstand (Deutsch, Türkisch, Arabisch). Format: nummerierte Liste, je Aktivität max. 3 Sätze, mit klarem Lernziel.',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'Was war die Stärke der KI-Antwort?',
         options: ['Ideen, auf die ich selbst nicht sofort gekommen wäre', 'Sehr generisch, hat mir nichts gebracht', 'Gut als Brainstorm-Anker, weiterentwickeln muss ich selbst'],
         correct: 2,
@@ -39,6 +41,7 @@ window.LESSON_04 = {
       promptToCopy: 'Du bist Erzieherin. Schreib aus diesen Stichpunkten einen sachlichen, fließenden Beobachtungstext (5-7 Sätze, neutraler Ton, in der Vergangenheitsform): "Kind 4 Jahre / Freispiel / Bauecke / mit zwei anderen Kindern / Konflikt um Bauklötze / hat Klotz weggenommen / wurde laut / nach 2 Min beruhigt / weitergespielt / nach Vorfall ruhiger".',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'Vorher Stichpunkte, jetzt fließender Text — wie schnell ging das?',
         options: ['In Sekunden, riesige Zeitersparnis', 'Hat zu viel ausgeschmückt, musste viel kürzen', 'Habe ich noch nicht ausprobiert'],
         correct: 0,
@@ -52,10 +55,11 @@ window.LESSON_04 = {
       promptToCopy: 'Übersetze den folgenden Eltern-Infotext in einfache Sprache (kurze Sätze, einfache Wörter, keine Fachbegriffe): "Im Rahmen unserer pädagogischen Arbeit legen wir großen Wert auf die individuelle Begleitung jedes Kindes. Sollten Sie Fragen zur Entwicklung Ihres Kindes haben, kontaktieren Sie uns bitte zeitnah, damit wir gemeinsam einen Termin für ein ausführliches Entwicklungsgespräch finden können."',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'Wie war das Ergebnis im Vergleich zum Original?',
         options: ['Viel verständlicher, Eltern werden das verstehen', 'Zu vereinfacht, klang kindisch', 'War schon vorher einfach genug'],
         correct: 0,
-        explanation: 'Bingo. Du kannst auch nachsteuern: "noch einfacher, max. 6-Wort-Sätze" oder "auf Türkisch übersetzen". Probier es aus.'
+        explanation: 'Bingo. Du kannst auch nachsteuern: "noch einfacher, max. 6-Wort-Sätze" oder Übersetzung in Türkisch / Arabisch / Russisch / Rumänisch / Ukrainisch / Englisch. Probier es aus.'
       }
     }
   ],

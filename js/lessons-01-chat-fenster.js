@@ -28,10 +28,11 @@ window.LESSON_01 = {
       promptToCopy: 'Erzähl mir in zwei Sätzen, was eine Erzieherin in einer Sprachfördergruppe typischerweise macht.',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'Wie war es, einen Prompt einzusprechen statt zu tippen?',
         options: ['Praktisch, viel schneller', 'Komisch, ich tipp lieber', 'Hat nicht funktioniert (mal in den Browser-Einstellungen schauen)'],
         correct: 0,
-        explanation: 'Diktieren spart viel Zeit — gerade unterwegs am iPad. Du kannst es jederzeit nutzen.'
+        explanation: 'Beides ist ok — viele tippen lieber, viele diktieren lieber. Hauptsache, du weisst jetzt, dass es geht und kannst jederzeit umschalten.'
       }
     }
   ],

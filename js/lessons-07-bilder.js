@@ -16,6 +16,7 @@ window.LESSON_07 = {
       promptToCopy: 'Beschreib mir, was auf diesem Bild zu sehen ist. Erkläre die Szene danach in einfacher, kindgerechter Sprache für ein 4-jähriges Kind, in maximal 5 Sätzen.',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'Wie hat die KI das Bild beschrieben?',
         options: ['Erstaunlich genau und kindgerecht', 'Sehr generisch / hat Details übersehen', 'Habe ich nicht ausprobiert'],
         correct: 0,
@@ -29,6 +30,7 @@ window.LESSON_07 = {
       promptToCopy: 'Tipp den Text auf dem Bild ab. Übersetz ihn danach auf Türkisch — gib beides untereinander aus, mit Zwischenüberschriften "Original" und "Türkisch".',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'Wie zuverlässig war das Abtippen?',
         options: ['Sehr genau, fast keine Fehler', 'Hat ein paar Wörter falsch erkannt', 'Habe ich nicht ausprobiert'],
         correct: 0,

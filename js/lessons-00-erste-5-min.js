@@ -19,19 +19,21 @@ window.LESSON_00 = {
       promptToCopy: 'Schreib ein 4-zeiliges Gedicht über meinen Hund Bello, der Socken klaut.',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'Wie schnell kam die Antwort?',
         options: ['Super schnell, fast sofort', 'Hat ein bisschen gedauert', 'Ich hab keine Antwort bekommen'],
         correct: 0,
-        explanation: 'Genau — KI ist beeindruckend schnell. Das wird gleich noch wichtig.'
+        explanation: 'Egal wie schnell — du hast deinen ersten Prompt durch und ChatGPT eine Antwort. Das war es schon, kein Hexenwerk.'
       }
     },
     {
       type: 'multiple-choice',
+      subjective: true,
       title: 'Frage zum Ergebnis',
-      question: 'Hat dich was an der Antwort überrascht?',
-      options: ['Ja, war kreativer als ich dachte', 'Nein, war erwartbar', 'War sogar lustig'],
+      question: 'Wie fandest du die Antwort?',
+      options: ['Kreativer als ich dachte', 'War erwartbar', 'War sogar lustig'],
       correct: 0,
-      explanation: 'Das ist genau der Effekt, den wir nutzen werden — und du wirst lernen, wie du diesen "Wow"-Effekt verlässlich auslöst.'
+      explanation: 'Egal wie — Geschmackssache. Spannend wird es gleich, wenn du lernst, wie du diese Ergebnisse verlaesslich besser machst.'
     }
   ]
 };

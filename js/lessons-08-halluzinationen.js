@@ -3,6 +3,7 @@ window.LESSON_08 = {
   title: 'Lektion 8 — Was die KI nicht kann',
   intro: { html: `
     <p>Eine ehrliche Wahrheit: ChatGPT <em>weiß</em> eigentlich nichts. Es <em>vorhersagt</em> nur Text. Wenn es etwas nicht weiß, schreibt es trotzdem überzeugt klingenden Unsinn — das nennt man <strong>Halluzination</strong>.</p>
+    <p><strong>Stand Mai 2026:</strong> Free-Modelle haben ihren Wissensschluss im <strong>August 2025</strong> — also rund 9 Monate alt. Alles, was danach passiert ist, kennt die KI nicht — und erfindet im Zweifel etwas.</p>
     <p>Das ist nicht "Schummelei", sondern eine Eigenschaft des Werkzeugs. Wenn du das weißt, kannst du dich schützen.</p>
     <h3>Die Faustregel</h3>
     <p>KI ist <strong>gut</strong> für Formulierungen, Zusammenfassungen, Stilarbeit, Brainstorming. KI ist <strong>gefährlich</strong> bei Fakten, Quellen, Daten, Personen — alles, was nachweisbar wahr oder falsch sein muss.</p>
@@ -15,6 +16,7 @@ window.LESSON_08 = {
       promptToCopy: 'Was ist die Kernaussage des Buchs "Der blaue Wal" von Klaus Müller? Wann ist es erschienen?',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'Wie hat ChatGPT geantwortet?',
         options: [
           'Hat selbstbewusst Inhalt und Erscheinungsjahr erfunden',
@@ -45,6 +47,7 @@ window.LESSON_08 = {
       promptToCopy: 'Welche pädagogischen Trends gab es im April 2026 in der deutschen Kita-Landschaft?',
       reflection: {
         type: 'multiple-choice',
+        subjective: true,
         question: 'Wie hat ChatGPT reagiert?',
         options: [
           'Hat klar gesagt: aktuelle Daten habe ich nicht',
