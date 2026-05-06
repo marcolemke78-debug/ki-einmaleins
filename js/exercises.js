@@ -18,6 +18,9 @@ const Exercises = {
     scope.querySelectorAll('[data-exercise="prompt-builder"]').forEach((root) => {
       Exercises.bindPromptBuilder(root);
     });
+    scope.querySelectorAll('[data-exercise="interface-find"]').forEach((root) => {
+      Exercises.bindInterfaceFind(root);
+    });
   },
 
   copyFromTarget(btn) {
@@ -161,6 +164,52 @@ const Exercises = {
       navigator.clipboard.writeText(text).then(() => {
         e.currentTarget.textContent = '✓ Kopiert!';
         setTimeout(() => { e.currentTarget.textContent = '📋 Diesen Prompt kopieren'; }, 2200);
+      });
+    });
+  },
+
+  render_interface_find(ex, id) {
+    const targets = ex.targets.map((t, i) =>
+      `<button class="hotspot" type="button" data-target="${i}"
+        style="left:${t.x}%;top:${t.y}%;width:${t.w}%;height:${t.h}%"
+        aria-label="${Renderer.escapeHtml(t.label)}"></button>`
+    ).join('');
+    const checklist = ex.targets.map((t, i) =>
+      `<li data-target="${i}">${Renderer.escapeHtml(t.label)}</li>`
+    ).join('');
+    const imgHtml = ex.image
+      ? `<img src="${ex.image}" alt="ChatGPT-Screenshot" class="hotspot-image" />`
+      : `<div class="screenshot-placeholder">📸 Hier kommt dein ChatGPT-Screenshot hin.<br><small>${ex.placeholder || 'Bild fehlt noch.'}</small></div>`;
+    return `
+      <div class="card" data-exercise="interface-find">
+        ${ex.question ? `<h3 class="card__title">${ex.question}</h3>` : ''}
+        <div class="hotspot-wrap">
+          ${imgHtml}
+          ${ex.image ? targets : ''}
+        </div>
+        <ol class="hotspot-checklist">${checklist}</ol>
+        <div class="feedback" hidden></div>
+      </div>
+    `;
+  },
+
+  bindInterfaceFind(root) {
+    const total = root.querySelectorAll('.hotspot-checklist li').length;
+    let found = 0;
+    root.querySelectorAll('.hotspot').forEach((spot) => {
+      spot.addEventListener('click', () => {
+        if (spot.classList.contains('is-found')) return;
+        spot.classList.add('is-found');
+        const idx = spot.dataset.target;
+        const li = root.querySelector(`.hotspot-checklist li[data-target="${idx}"]`);
+        if (li) li.classList.add('is-found');
+        found += 1;
+        if (found === total) {
+          const fb = root.querySelector('.feedback');
+          fb.className = 'feedback feedback--correct';
+          fb.innerHTML = '✓ Du hast alle Knöpfe gefunden — du kennst dich aus!';
+          fb.hidden = false;
+        }
       });
     });
   },

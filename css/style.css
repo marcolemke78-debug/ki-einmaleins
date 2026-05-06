@@ -357,3 +357,16 @@ details.expand > summary {
 .builder-option.is-active { border-color: var(--accent); background: var(--accent-light); }
 .builder-result { margin-top: var(--space-3); }
 .builder-result__label { font-weight: 600; margin-bottom: var(--space-1); }
+
+.hotspot-wrap { position: relative; margin-bottom: var(--space-3); }
+.hotspot-image { width: 100%; display: block; border-radius: var(--radius); }
+.hotspot {
+  position: absolute; background: rgba(15,118,110,0.15);
+  border: 2px dashed var(--accent); border-radius: 8px;
+  cursor: pointer; padding: 0;
+}
+.hotspot:hover { background: rgba(15,118,110,0.3); }
+.hotspot.is-found { background: rgba(22,163,74,0.3); border-color: var(--success); }
+.hotspot-checklist { padding-left: 24px; }
+.hotspot-checklist li { padding: 4px 0; }
+.hotspot-checklist li.is-found { text-decoration: line-through; color: var(--success); }
