@@ -3,7 +3,24 @@ window.LESSON_08 = {
   title: 'Lektion 8 — Was die KI nicht kann',
   intro: { html: `
     <p>Eine ehrliche Wahrheit: ChatGPT <em>weiß</em> eigentlich nichts. Es <em>vorhersagt</em> nur Text. Wenn es etwas nicht weiß, schreibt es trotzdem überzeugt klingenden Unsinn — das nennt man <strong>Halluzination</strong>.</p>
-    <p><strong>Stand Mai 2026:</strong> Free-Modelle haben ihren Wissensschluss im <strong>August 2025</strong> — also rund 9 Monate alt. Alles, was danach passiert ist, kennt die KI nicht — und erfindet im Zweifel etwas.</p>
+    <p>Dazu kommt: ChatGPT hat einen <strong>Wissensschluss</strong>. Alles, was danach passiert ist, kennt die KI nicht — und erfindet im Zweifel etwas.</p>
+    <div class="timeline timeline--cutoff" role="list">
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">📚</div>
+        <div class="timeline__date">August 2025</div>
+        <div class="timeline__title">Wissensschluss</div>
+        <div class="timeline__text">Bis hier kennt die KI die Welt.</div>
+      </div>
+      <div class="timeline__gap" aria-hidden="true">
+        ≈ 9 Monate<br>blinder Fleck
+      </div>
+      <div class="timeline__entry is-now" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">📍</div>
+        <div class="timeline__date">Mai 2026</div>
+        <div class="timeline__title">Heute</div>
+        <div class="timeline__text">Alles dazwischen muss die KI raten.</div>
+      </div>
+    </div>
     <p>Das ist nicht "Schummelei", sondern eine Eigenschaft des Werkzeugs. Wenn du das weißt, kannst du dich schützen.</p>
     <h3>Die Faustregel</h3>
     <p>KI ist <strong>gut</strong> für Formulierungen, Zusammenfassungen, Stilarbeit, Brainstorming. KI ist <strong>gefährlich</strong> bei Fakten, Quellen, Daten, Personen — alles, was nachweisbar wahr oder falsch sein muss.</p>

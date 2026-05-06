@@ -4,11 +4,26 @@ window.LESSON_09 = {
   intro: { html: `
     <p>Glückwunsch — du hast die wichtigsten 80 Prozent gemeistert. Hier ein kompakter Ausblick: Was es sonst noch gibt, woher das Ganze kommt, und wo es hingeht.</p>
     <h3>Mini-Historie in drei Stationen</h3>
-    <ul>
-      <li><strong>November 2022:</strong> ChatGPT-Launch — der Aha-Moment für die ganze Welt. Innerhalb von 5 Tagen 1 Million Nutzer.</li>
-      <li><strong>2023/24:</strong> KI lernt sehen und sprechen. Bilder, Sprache, Mehrsprachigkeit werden Standard.</li>
-      <li><strong>2025/26:</strong> Agenten — die KI klickt selbst. Sie öffnet Tabs, recherchiert, bucht Termine. Wir stehen erst am Anfang.</li>
-    </ul>
+    <div class="timeline timeline--horizontal" role="list">
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">🚀</div>
+        <div class="timeline__date">November 2022</div>
+        <div class="timeline__title">ChatGPT-Launch</div>
+        <div class="timeline__text">Der Aha-Moment für die ganze Welt. 1 Million Nutzer in 5 Tagen.</div>
+      </div>
+      <div class="timeline__entry" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">👁️</div>
+        <div class="timeline__date">2023 / 24</div>
+        <div class="timeline__title">KI lernt sehen und sprechen</div>
+        <div class="timeline__text">Bilder, Sprache, Mehrsprachigkeit werden Standard.</div>
+      </div>
+      <div class="timeline__entry is-now" role="listitem">
+        <div class="timeline__dot" aria-hidden="true">🤖</div>
+        <div class="timeline__date">2025 / 26</div>
+        <div class="timeline__title">Agenten klicken selbst</div>
+        <div class="timeline__text">KI öffnet Tabs, recherchiert, bucht Termine. Wir stehen erst am Anfang.</div>
+      </div>
+    </div>
     <h3>Andere KI-Werkzeuge</h3>
     <ul>
       <li><strong>Claude</strong> (von Anthropic) — gut für längere Texte und Analyse.</li>
