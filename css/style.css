@@ -341,3 +341,19 @@ details.expand > summary {
 .prompt-card__label { font-weight: 600; color: var(--accent); margin-bottom: var(--space-1); }
 .prompt-card__text { font-family: ui-monospace, monospace; font-size: 14px; }
 @media (max-width: 1023px) { .prompt-grid { grid-template-columns: 1fr; } }
+
+.builder-slot { margin-bottom: var(--space-3); }
+.builder-slot__label { font-weight: 600; color: var(--accent); margin-bottom: var(--space-1); }
+.builder-slot__chosen {
+  min-height: 36px; padding: 8px 12px; background: #F3F4F6;
+  border-radius: var(--radius); margin-bottom: var(--space-2); font-style: italic; color: var(--text-muted);
+}
+.builder-slot__chosen:not(:empty) { color: var(--text); font-style: normal; }
+.builder-slot__options { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.builder-option {
+  padding: 8px 14px; border: 1.5px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); font: inherit; cursor: pointer; min-height: var(--tap-min);
+}
+.builder-option.is-active { border-color: var(--accent); background: var(--accent-light); }
+.builder-result { margin-top: var(--space-3); }
+.builder-result__label { font-weight: 600; margin-bottom: var(--space-1); }

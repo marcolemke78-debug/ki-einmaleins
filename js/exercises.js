@@ -15,6 +15,9 @@ const Exercises = {
     scope.querySelectorAll('[data-exercise="prompt-comparison"]').forEach((root) => {
       Exercises.bindPromptComparison(root);
     });
+    scope.querySelectorAll('[data-exercise="prompt-builder"]').forEach((root) => {
+      Exercises.bindPromptBuilder(root);
+    });
   },
 
   copyFromTarget(btn) {
@@ -87,6 +90,77 @@ const Exercises = {
           feedback.innerHTML = explanation || 'Schau dir Prompt ' + String.fromCharCode(65 + correct) + ' nochmal an.';
         }
         feedback.hidden = false;
+      });
+    });
+  },
+
+  render_prompt_builder(ex, id) {
+    const slotsHtml = ex.slots.map((slot, sIdx) => {
+      const opts = slot.options.map((opt, oIdx) =>
+        `<button class="builder-option" type="button" data-slot="${sIdx}" data-option="${oIdx}">${Renderer.escapeHtml(opt)}</button>`
+      ).join('');
+      return `
+        <div class="builder-slot" data-slot="${sIdx}">
+          <div class="builder-slot__label">${slot.label}</div>
+          <div class="builder-slot__chosen" data-chosen></div>
+          <div class="builder-slot__options">${opts}</div>
+        </div>
+      `;
+    }).join('');
+    return `
+      <div class="card" data-exercise="prompt-builder" data-correct='${JSON.stringify(ex.slots.map((s) => s.correct))}'>
+        ${ex.question ? `<h3 class="card__title">${ex.question}</h3>` : ''}
+        ${slotsHtml}
+        <div class="builder-result" hidden>
+          <div class="builder-result__label">Dein Prompt:</div>
+          <div class="prompt-box" data-result></div>
+          <button class="copy-btn" type="button" data-copy-from-builder>📋 Diesen Prompt kopieren</button>
+        </div>
+        <button class="btn" type="button" data-builder-check>Prompt zusammensetzen</button>
+        <div class="feedback" hidden></div>
+      </div>
+    `;
+  },
+
+  bindPromptBuilder(root) {
+    const correct = JSON.parse(root.dataset.correct);
+    const chosen = correct.map(() => null);
+
+    root.querySelectorAll('.builder-option').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const s = parseInt(btn.dataset.slot, 10);
+        const o = parseInt(btn.dataset.option, 10);
+        chosen[s] = { o, text: btn.textContent };
+        const slotEl = root.querySelector(`.builder-slot[data-slot="${s}"]`);
+        slotEl.querySelector('[data-chosen]').textContent = btn.textContent;
+        slotEl.querySelectorAll('.builder-option').forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+      });
+    });
+
+    root.querySelector('[data-builder-check]').addEventListener('click', () => {
+      if (chosen.some((c) => c === null)) {
+        alert('Wähl bitte für jeden Baustein eine Option.');
+        return;
+      }
+      const allCorrect = chosen.every((c, i) => c.o === correct[i]);
+      const feedback = root.querySelector('.feedback');
+      const resultBox = root.querySelector('.builder-result');
+      const result = chosen.map((c) => c.text).join(' ');
+      resultBox.querySelector('[data-result]').textContent = result;
+      resultBox.hidden = false;
+      feedback.hidden = false;
+      feedback.className = 'feedback ' + (allCorrect ? 'feedback--correct' : 'feedback--wrong');
+      feedback.innerHTML = allCorrect
+        ? '✓ Genau diese Bausteine ergeben einen starken Prompt — kopier ihn dir und probier ihn aus.'
+        : 'Fast! Schau dir die Bausteine nochmal an — manche passen besser zu Erzieher-Alltag.';
+    });
+
+    root.querySelector('[data-copy-from-builder]').addEventListener('click', (e) => {
+      const text = root.querySelector('[data-result]').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        e.currentTarget.textContent = '✓ Kopiert!';
+        setTimeout(() => { e.currentTarget.textContent = '📋 Diesen Prompt kopieren'; }, 2200);
       });
     });
   },
