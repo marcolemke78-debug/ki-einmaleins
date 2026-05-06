@@ -32,6 +32,21 @@ const Renderer = {
       btn.classList.add('is-done');
     });
 
+    // Weiter-zu-naechster-Lektion-Button
+    const nextId = lesson.id + 1;
+    if (nextId < (window.LESSONS_COUNT || 10)) {
+      const footer = main.querySelector('.lesson-footer');
+      const nextBtn = document.createElement('button');
+      nextBtn.type = 'button';
+      nextBtn.className = 'btn btn--ghost';
+      nextBtn.style.marginLeft = '12px';
+      nextBtn.textContent = `Weiter mit Lektion ${nextId} →`;
+      nextBtn.addEventListener('click', () => {
+        if (typeof window.navigateTo === 'function') window.navigateTo(nextId);
+      });
+      footer.appendChild(nextBtn);
+    }
+
     if (window.Exercises && window.Exercises.bindAll) window.Exercises.bindAll(main);
   },
 

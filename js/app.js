@@ -60,3 +60,6 @@ window.markCurrentLessonDone = function () {
   renderSidebar();
   renderProgressBar();
 };
+
+window.navigateTo = navigateTo;
+window.LESSONS_COUNT = LESSONS.length;
