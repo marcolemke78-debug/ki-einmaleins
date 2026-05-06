@@ -370,3 +370,11 @@ details.expand > summary {
 .hotspot-checklist { padding-left: 24px; }
 .hotspot-checklist li { padding: 4px 0; }
 .hotspot-checklist li.is-found { text-decoration: line-through; color: var(--success); }
+
+.halluc-text { line-height: 2; font-size: 17px; }
+.halluc-sentence { cursor: pointer; padding: 2px 4px; border-radius: 4px; transition: background .15s; }
+.halluc-sentence:hover { background: rgba(15,118,110,0.1); }
+.halluc-sentence.is-selected { background: var(--accent-light); }
+.halluc-sentence.is-correct { background: #BBF7D0; }
+.halluc-sentence.is-missed { background: #FEF08A; }
+.halluc-sentence.is-wrong { background: #FECACA; }

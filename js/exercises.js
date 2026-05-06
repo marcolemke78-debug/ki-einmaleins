@@ -21,6 +21,9 @@ const Exercises = {
     scope.querySelectorAll('[data-exercise="interface-find"]').forEach((root) => {
       Exercises.bindInterfaceFind(root);
     });
+    scope.querySelectorAll('[data-exercise="hallucination-mark"]').forEach((root) => {
+      Exercises.bindHallucinationMark(root);
+    });
   },
 
   copyFromTarget(btn) {
@@ -211,6 +214,56 @@ const Exercises = {
           fb.hidden = false;
         }
       });
+    });
+  },
+
+  render_hallucination_mark(ex, id) {
+    const sentencesHtml = ex.sentences.map((s, i) =>
+      `<span class="halluc-sentence" data-index="${i}">${Renderer.escapeHtml(s)}</span> `
+    ).join('');
+    return `
+      <div class="card" data-exercise="hallucination-mark"
+           data-problematic='${JSON.stringify(ex.problematic)}'
+           data-reasons='${JSON.stringify(ex.reasons || ['erfunden', 'unbelegt', 'widerspricht Wissen'])}'>
+        ${ex.question ? `<h3 class="card__title">${ex.question}</h3>` : ''}
+        <p class="halluc-text">${sentencesHtml}</p>
+        <p class="copy-hint">Klick alle Satze an, die dir verdachtig vorkommen.</p>
+        <button class="btn" type="button" data-halluc-check>Auswertung anzeigen</button>
+        <div class="feedback" hidden></div>
+      </div>
+    `;
+  },
+
+  bindHallucinationMark(root) {
+    const problematic = JSON.parse(root.dataset.problematic);
+    const selected = new Set();
+
+    root.querySelectorAll('.halluc-sentence').forEach((s) => {
+      s.addEventListener('click', () => {
+        const i = parseInt(s.dataset.index, 10);
+        if (selected.has(i)) {
+          selected.delete(i); s.classList.remove('is-selected');
+        } else {
+          selected.add(i); s.classList.add('is-selected');
+        }
+      });
+    });
+
+    root.querySelector('[data-halluc-check]').addEventListener('click', () => {
+      const sentences = root.querySelectorAll('.halluc-sentence');
+      let correctCount = 0;
+      sentences.forEach((s, i) => {
+        const isProblem = problematic.includes(i);
+        const wasSelected = selected.has(i);
+        s.classList.remove('is-selected');
+        if (isProblem && wasSelected) { s.classList.add('is-correct'); correctCount += 1; }
+        else if (isProblem && !wasSelected) { s.classList.add('is-missed'); }
+        else if (!isProblem && wasSelected) { s.classList.add('is-wrong'); }
+      });
+      const fb = root.querySelector('.feedback');
+      fb.hidden = false;
+      fb.className = 'feedback ' + (correctCount === problematic.length ? 'feedback--correct' : 'feedback--wrong');
+      fb.innerHTML = `Du hast ${correctCount} von ${problematic.length} Halluzinationen erkannt. Grun = richtig markiert, Gelb = ubersehen, Rot = falschlich markiert.`;
     });
   },
 
