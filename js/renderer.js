@@ -14,6 +14,7 @@ const Renderer = {
     ).join('');
 
     main.innerHTML = `
+      ${Renderer.renderLessonPath(lesson.id)}
       <h1 class="lesson-title">${lesson.title}</h1>
       <div class="phase-tabs">${tabsHtml}</div>
       ${contentHtml}
@@ -21,6 +22,13 @@ const Renderer = {
         <button class="btn" type="button" id="mark-done-btn">Lektion als erledigt markieren ✓</button>
       </div>
     `;
+
+    main.querySelectorAll('.lesson-path .timeline__entry').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = parseInt(btn.dataset.go, 10);
+        if (typeof window.navigateTo === 'function') window.navigateTo(id);
+      });
+    });
 
     main.querySelectorAll('.phase-tab').forEach((tab) => {
       tab.addEventListener('click', () => Renderer.activatePhase(tab.dataset.phase));
@@ -48,6 +56,29 @@ const Renderer = {
     }
 
     if (window.Exercises && window.Exercises.bindAll) window.Exercises.bindAll(main);
+  },
+
+  renderLessonPath(currentId) {
+    const labels = window.LESSON_PATH_LABELS || {};
+    const icons = window.LESSON_ICONS || {};
+    const total = window.LESSONS_COUNT || 10;
+    const entries = [];
+    for (let i = 0; i < total; i++) {
+      const isNow = i === currentId;
+      const isDone = window.Progress && window.Progress.isDone(i);
+      const cls = ['timeline__entry'];
+      if (isNow) cls.push('is-now');
+      if (isDone && !isNow) cls.push('is-done');
+      const label = labels[i] || ('Lektion ' + i);
+      entries.push(
+        `<button type="button" class="${cls.join(' ')}" data-go="${i}" aria-label="Zu Lektion ${i}: ${Renderer.escapeHtml(label)}">
+          <div class="timeline__dot" aria-hidden="true">${icons[i] || ''}</div>
+          <div class="timeline__date">${i}</div>
+          <div class="timeline__title">${Renderer.escapeHtml(label)}</div>
+        </button>`
+      );
+    }
+    return `<div class="timeline timeline--path lesson-path" role="list">${entries.join('')}</div>`;
   },
 
   buildPhases(lesson) {

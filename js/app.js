@@ -17,6 +17,21 @@ const LESSON_ICONS = {
   9: '🎉'
 };
 
+const LESSON_PATH_LABELS = {
+  0: 'Erste 5 Min',
+  1: 'Chat-Fenster',
+  2: 'Prompten',
+  3: 'Datenschutz',
+  4: 'Praxis',
+  5: 'Chat-Hygiene',
+  6: 'Dateien',
+  7: 'Bilder',
+  8: 'Halluzinationen',
+  9: 'Ausblick'
+};
+window.LESSON_ICONS = LESSON_ICONS;
+window.LESSON_PATH_LABELS = LESSON_PATH_LABELS;
+
 let currentLessonId = null;
 
 function renderSidebar() {
