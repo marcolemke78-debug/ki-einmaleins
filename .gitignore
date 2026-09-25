@@ -1,1 +1,5 @@
 .DS_Store
+
+# Entwicklungsdateien nur lokal (enthalten persoenliche Angaben)
+CLAUDE.md
+docs/superpowers/
